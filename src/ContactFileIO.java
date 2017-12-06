@@ -26,7 +26,6 @@ public class ContactFileIO {
 
             for(String contact : currentContacts) {
                 List<String> contactArr = Arrays.asList(contact.split(","));
-                System.out.println(contactArr);
                 String key = contactArr.get(0).toLowerCase() + " " + contactArr.get(1).toLowerCase();
                 System.out.println();
                 this.contacts.put(key, new Contact(contactArr.get(0), contactArr.get(1), contactArr.get(2)));
@@ -49,9 +48,7 @@ public class ContactFileIO {
 //
              String current = String.format ("%s,%s,%s" , entry.getValue ().getFirstName (), entry.getValue ().getLastName (), entry.getValue ().getPhoneNumber ());
                               combined.add(current);
-             System.out.println (current);
 
-             System.out.println(entry.getKey());
          }
          Files.write(dataFile, combined);
           } catch(IOException e) {
