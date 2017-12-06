@@ -1,6 +1,21 @@
 import util.Input;
 
+import java.util.HashMap;
+
 public class ContactTest {
+
+        private static ContactFileIO contactFileIO = new ContactFileIO ();
+        private static HashMap<String, Contact> contactHashMap = new HashMap<>(contactFileIO.getContacts());
+
+    public static void outputFormat(String name) {
+        if (contactHashMap.containsKey(name)) {
+            String fullName = contactHashMap.get(name).getFirstName() + " " + contactHashMap.get(name).getLastName();
+            String phoneNumber = contactHashMap.get(name).getPhoneNumber();
+            System.out.printf("%-15s | %-12s |", fullName, phoneNumber);
+        } else {
+            System.out.println("name does not exist");
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -12,17 +27,33 @@ public class ContactTest {
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
-        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
 
+        int userChoice = input.getInt(1,5);
 
+        System.out.println("\n");
 
+        String header = "Name            | Phone number |";
+        String hr = "-------------------------------";
+        System.out.println(header);
+        System.out.println(hr);
 
+        if (userChoice == 1){
+            for (String key : contactHashMap.keySet()) {
+                outputFormat(key);
+            }
+            System.out.println();
+        } else if (userChoice == 2) {
 
-    ContactFileIO test = new ContactFileIO ();
-        System.out.println (test.getContacts ());
+        } else if (userChoice == 3) {
 
-        test.setContacts(test.getContacts());
+        } else if (userChoice == 4) {
+
+        } else if (userChoice == 5) {
+
+        }
+
 
     }
+
 
 }

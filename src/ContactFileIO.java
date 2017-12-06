@@ -27,7 +27,8 @@ public class ContactFileIO {
             for(String contact : currentContacts) {
                 List<String> contactArr = Arrays.asList(contact.split(","));
                 System.out.println(contactArr);
-                String key = contactArr.get(0) + " " + contactArr.get(1);
+                String key = contactArr.get(0).toLowerCase() + " " + contactArr.get(1).toLowerCase();
+                System.out.println();
                 this.contacts.put(key, new Contact(contactArr.get(0), contactArr.get(1), contactArr.get(2)));
 
              }
@@ -55,7 +56,8 @@ public class ContactFileIO {
          Files.write(dataFile, combined);
           } catch(IOException e) {
               System.out.println(e.getMessage());
-     }    }
+            }
+    }
 
     public void setContacts(HashMap<String, Contact> contacts) {
         this.contacts = contacts;

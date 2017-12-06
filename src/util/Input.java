@@ -19,7 +19,7 @@ public class Input {
     }
 
     public int getInt(int min, int max) {
-        System.out.println("Please input an integer between " + min + " and " + max);
+        System.out.print("Enter an option (1, 2, 3, 4 or 5): ");
 
         int userInput = this.getInt();
 
