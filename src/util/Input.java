@@ -1,42 +1,21 @@
 package util;
 
-
 import java.util.Scanner;
 
 public class Input {
     private Scanner scan;
 
     public Input() {
-        this.scan = new Scanner(System.in);
+        this.scan = new Scanner(System.in).useDelimiter("\n");
     }
 
     public String getString() {
         return this.scan.nextLine();
     }
 
-    public String getString(String prompt) {
-        System.out.println(prompt);
-        return this.scan.nextLine();
-    }
-
-
     public boolean yesNo() {
         String input = this.scan.next();
-        if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean yesNo(String prompt) {
-        System.out.println(prompt);
-        String input = this.scan.next();
-        if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
-            return true;
-        } else {
-            return false;
-        }
+        return (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"));
     }
 
     public int getInt(int min, int max) {
@@ -51,26 +30,16 @@ public class Input {
         }
     }
 
-    public int getInt(int min, int max, String prompt) {
-        System.out.println(prompt);
-
-        int userInput = this.getInt();
-
-        if(userInput > max || userInput < min) {
-            return getInt(min, max);
-        } else {
-            return userInput;
+    public int getInt() {
+        try {
+            String input = this.scan.next();
+            return Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            System.out.println("The input was invalid, please try again:");
+            return getInt();
         }
     }
 
-    public int getInt() {
-        return this.scan.nextInt();
-    }
-
-    public int getInt(String prompt) {
-        System.out.println(prompt);
-        return this.scan.nextInt();
-    }
 
     public double getDouble(double min, double max) {
         System.out.println("Please input an decimal number between " + min + " and " + max);
@@ -84,25 +53,34 @@ public class Input {
         }
     }
 
-    public double getDouble(double min, double max, String prompt) {
-        System.out.println(prompt);
-
-        double userInput = this.getDouble();
-
-        if(userInput > max || userInput < min) {
-            return getDouble(min, max);
-        } else {
-            return userInput;
+    public double getDouble() {
+        try {
+            String input = this.scan.next();
+            return Double.valueOf(input);
+        } catch (NumberFormatException e) {
+            System.out.println("The input was invalid, please try again:");
+            return getDouble();
         }
     }
 
-    public double getDouble() {
-        return this.scan.nextDouble();
+    public int getBinary() {
+        try {
+            String input = this.scan.next();
+            return Integer.valueOf(input, 2);
+        } catch (NumberFormatException e) {
+            System.out.println("The input was invalid, please try again:");
+            return getBinary();
+        }
     }
 
-    public double getDouble(String prompt) {
-        System.out.println(prompt);
-        return this.scan.nextDouble();
+    public int getHex() {
+        try {
+            String input = this.scan.next();
+            return Integer.valueOf(input, 16);
+        } catch (NumberFormatException e) {
+            System.out.println("The input was invalid, please try again:");
+            return getHex();
+        }
     }
+
 }
-
