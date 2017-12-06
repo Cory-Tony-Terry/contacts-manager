@@ -2,10 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ContactFileIO {
     private HashMap<String, Contact> contacts = new HashMap <> ();
@@ -41,12 +38,24 @@ public class ContactFileIO {
      }
 
      private void writeFile() {
+
+            try{
+
+         List<String> combined = new ArrayList <> ();
          for (Map.Entry<String, Contact> entry : this.contacts.entrySet()) {
-//             properties.put(entry.getKey(), entry.getValue());
+//
+//             Writing to the contact.csv file with formatting.
+//
+             String current = String.format ("%s,%s,%s" , entry.getValue ().getFirstName (), entry.getValue ().getLastName (), entry.getValue ().getPhoneNumber ());
+                              combined.add(current);
+             System.out.println (current);
+
              System.out.println(entry.getKey());
          }
-
-     }
+         Files.write(dataFile, combined);
+          } catch(IOException e) {
+              System.out.println(e.getMessage());
+     }    }
 
     public void setContacts(HashMap<String, Contact> contacts) {
         this.contacts = contacts;
