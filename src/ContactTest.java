@@ -8,11 +8,11 @@ import java.util.HashMap;
 public class ContactTest {
     private static ContactFileIO contactFileIO = new ContactFileIO ();
     private static HashMap<String, Contact> contactHashMap = new HashMap<>(contactFileIO.getContacts());
+    private static Input input = new Input();
 
     public static void main(String[] args) throws ParseException {
         boolean begin = true;
 
-        Input input = new Input();
         do {
 
 
@@ -42,34 +42,22 @@ public class ContactTest {
             } else if (userChoice == 2) {
                 System.out.println ();
                 input.getString ();
-                System.out.print ("Please input the contacts First Name: ");
-                String firstName = input.getString ();
-                System.out.print ("Please input the contacts Last Name: ");
-                String lastName = input.getString ();
-                System.out.print ("Please input the contacts  Phone Number: ");
-                String phoneNumber = input.getString ();
-                addNameToArray (firstName, lastName, phoneNumber);
+                String[] currentContact = getContactInfo("full");
+                addNameToArray (currentContact[0], currentContact[1], currentContact[2]);
 
             } else if (userChoice == 3) {
 
                 input.getString ();
-                System.out.print ("Please input the contacts First Name: ");
-                String firstName = input.getString ();
-                System.out.print ("Please input the contacts Last Name: ");
-                String lastName = input.getString ();
-                String fullName = firstName.toLowerCase () + " " + lastName.toLowerCase ();
+                String[] currentContact = getContactInfo();
+                String fullName = currentContact[0].toLowerCase () + " " + currentContact[1].toLowerCase ();
                 outputFormat (fullName);
 
             } else if (userChoice == 4) {
 
                 input.getString ();
-                System.out.print ("Please input the contacts First Name: ");
-                String firstName = input.getString ();
-                System.out.print ("Please input the contacts Last Name: ");
-                String lastName = input.getString ();
-                String fullName = firstName.toLowerCase () + " " + lastName.toLowerCase ();
+                String[] currentContact = getContactInfo();
+                String fullName = currentContact[0].toLowerCase () + " " + currentContact[1].toLowerCase ();
                 removeNamefromArray (fullName);
-
 
             } else if (userChoice == 5) {
               begin = false;
@@ -81,8 +69,6 @@ public class ContactTest {
     }
 
     public static void outputFormat(String name) throws ParseException {
-
-
 
         try {
             String phoneMaskSevenDigit = "###-####";
@@ -119,7 +105,29 @@ public class ContactTest {
         contactHashMap.remove (key);
     }
 
+    private static String[] getContactInfo(){
+        String[] contactInfo;
+        contactInfo = new String[2];
+        input.getString ();
+        System.out.print ("Please input the contacts First Name: ");
+        contactInfo[0] = input.getString ();
+        System.out.print ("Please input the contacts Last Name: ");
+        contactInfo[1] = input.getString ();
+        return contactInfo;
+    }
 
+    private static String[] getContactInfo(String full){
+            String[] contactInfo;
+            contactInfo = new String[3];
+            input.getString();
+            System.out.print("Please input the contacts First Name: ");
+            contactInfo[0] = input.getString();
+            System.out.print("Please input the contacts Last Name: ");
+            contactInfo[1] = input.getString();
+            System.out.print("Please input the contacts  Phone Number: ");
+            contactInfo[2] = input.getString();
+            return contactInfo;
+    }
 
 
 
