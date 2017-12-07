@@ -104,7 +104,6 @@ public class ContactApplication {
     private static String[] getContactInfo(){
         String[] contactInfo;
         contactInfo = new String[2];
-        input.getString ();
         System.out.print ("Please input the contacts First Name: ");
         contactInfo[0] = input.getString ();
         System.out.print ("Please input the contacts Last Name: ");
@@ -115,7 +114,6 @@ public class ContactApplication {
     private static String[] getContactInfo(String full){
             String[] contactInfo;
             contactInfo = new String[3];
-            input.getString();
             System.out.print("Please input the contacts First Name: ");
             contactInfo[0] = input.getString();
             System.out.print("Please input the contacts Last Name: ");
