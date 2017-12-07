@@ -43,6 +43,7 @@ public class ContactApplication {
                 System.out.println();
                 addNameToArray (currentContact[0], currentContact[1], currentContact[2]);
                 System.out.println();
+                contactFileIO.setContacts (contactHashMap);
 
             } else if (userChoice == 3) {
 
