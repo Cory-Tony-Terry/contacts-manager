@@ -42,14 +42,18 @@ public class ContactApplication {
                 System.out.println ();
                 input.getString ();
                 String[] currentContact = getContactInfo("full");
+                System.out.println();
                 addNameToArray (currentContact[0], currentContact[1], currentContact[2]);
+                System.out.println();
 
             } else if (userChoice == 3) {
 
                 input.getString ();
                 String[] currentContact = getContactInfo();
                 String fullName = currentContact[0].toLowerCase () + " " + currentContact[1].toLowerCase ();
+                System.out.println();
                 outputFormat (fullName);
+                System.out.println();
 
             } else if (userChoice == 4) {
 
@@ -57,6 +61,7 @@ public class ContactApplication {
                 String[] currentContact = getContactInfo();
                 String fullName = currentContact[0].toLowerCase () + " " + currentContact[1].toLowerCase ();
                 removeNamefromArray (fullName);
+                System.out.println();
 
             } else if (userChoice == 5) {
               begin = false;
