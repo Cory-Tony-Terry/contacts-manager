@@ -1,8 +1,5 @@
 import util.Input;
-
 import javax.swing.text.MaskFormatter;
-import java.lang.reflect.Array;
-import java.text.ParseException;
 import java.util.HashMap;
 
 public class ContactApplication {
@@ -10,7 +7,7 @@ public class ContactApplication {
     private static HashMap<String, Contact> contactHashMap = new HashMap<>(contactFileIO.getContacts());
     private static Input input = new Input();
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
         boolean begin = true;
 
         do {
