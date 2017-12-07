@@ -14,17 +14,13 @@ public class ContactFileIO {
         readFile();
     }
 
-    public HashMap <String, Contact> getContacts() {
-
-        return this.contacts;
-    }
-
     private  void readFile() {
         try {
 
             List<String> currentContacts = Files.readAllLines(dataFile);
 
             for(String contact : currentContacts) {
+
                 List<String> contactArr = Arrays.asList(contact.split(","));
                 String key = contactArr.get(0).toLowerCase() + " " + contactArr.get(1).toLowerCase();
                 System.out.println();
@@ -38,24 +34,27 @@ public class ContactFileIO {
      }
 
      private void writeFile() {
-
-            try{
-
+        try{
          List<String> combined = new ArrayList <> ();
+
          for (Map.Entry<String, Contact> entry : this.contacts.entrySet()) {
-//
-//             Writing to the contact.csv file with formatting.
-//
+
              String current = String.format ("%s,%s,%s" , entry.getValue ().getFirstName (), entry.getValue ().getLastName (), entry.getValue ().getPhoneNumber ());
-                              combined.add(current);
+
+             combined.add(current);
 
          }
+
          Files.write(dataFile, combined);
-          } catch(IOException e) {
+
+          }catch(IOException e) {
               System.out.println(e.getMessage());
             }
     }
 
+    public HashMap<String, Contact> getContacts() {
+        return this.contacts;
+    }
     public void setContacts(HashMap<String, Contact> contacts) {
         this.contacts = contacts;
         writeFile();
