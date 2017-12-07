@@ -82,13 +82,29 @@ public class ContactApplication {
             maskFormatter.setValidCharacters("0123456789");
             maskFormatter.setValueContainsLiteralCharacters(false);
 
-            if (contactHashMap.containsKey(name)) {
-                String fullName = contactHashMap.get(name).getFirstName() + " " + contactHashMap.get(name).getLastName();
-                String phoneNumber = contactHashMap.get(name).getPhoneNumber();
-                String formattedPhoneNumber = maskFormatter.valueToString(phoneNumber);
+            MaskFormatter maskFormatter7= new MaskFormatter(phoneMaskSevenDigit);
+            maskFormatter7.setValidCharacters("0123456789");
+            maskFormatter7.setValueContainsLiteralCharacters(false);
 
-                System.out.printf("%-15s | %-12s |", fullName, formattedPhoneNumber);
-                System.out.println ();
+            if (contactHashMap.containsKey(name)) {
+
+                if (contactHashMap.get(name).getPhoneNumber().length() > 7){
+                    String fullName = contactHashMap.get(name).getFirstName() + " " + contactHashMap.get(name).getLastName();
+                    String phoneNumber = contactHashMap.get(name).getPhoneNumber();
+                    String formattedPhoneNumber = maskFormatter.valueToString(phoneNumber);
+
+                    System.out.printf("%-15s | %-12s |", fullName, formattedPhoneNumber);
+                    System.out.println ();
+                } else {
+                    String fullName = contactHashMap.get(name).getFirstName() + " " + contactHashMap.get(name).getLastName();
+                    String phoneNumber = contactHashMap.get(name).getPhoneNumber();
+                    String formattedPhoneNumber = maskFormatter7.valueToString(phoneNumber);
+
+                    System.out.printf("%-15s | %-12s |", fullName, formattedPhoneNumber);
+                    System.out.println ();
+                }
+
+
             } else {
                 System.out.println("name does not exist");
             }
