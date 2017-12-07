@@ -96,7 +96,7 @@ public class ContactApplication {
 
     private static void addNameToArray(String firstName, String lastName, String phoneNumber){
         String key = firstName.toLowerCase() + " " + lastName.toLowerCase();
-        contactHashMap.putIfAbsent (key,  new Contact(firstName, lastName, phoneNumber));
+        contactHashMap.put (key,  new Contact(firstName, lastName, phoneNumber));
         outputFormat (key);
     }
 
