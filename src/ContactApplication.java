@@ -9,6 +9,8 @@ public class ContactApplication {
 
     public static void main(String[] args){
         boolean begin = true;
+        String header = "Name            | Phone number |";
+        String hr = "-------------------------------";
 
         do {
 
@@ -23,19 +25,18 @@ public class ContactApplication {
 
             System.out.println ("\n");
 
-            String header = "Name            | Phone number |";
-            String hr = "-------------------------------";
-
-
             if (userChoice == 1) {
                 System.out.println (header);
                 System.out.println (hr);
+
                 for (String key : contactHashMap.keySet ()) {
                     outputFormat (key);
                 }
+
                 System.out.println ();
 
             } else if (userChoice == 2) {
+
                 System.out.println ();
                 input.getString ();
                 String[] currentContact = getContactInfo("full");
