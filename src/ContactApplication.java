@@ -61,6 +61,8 @@ public class ContactApplication {
                 String fullName = currentContact[0].toLowerCase () + " " + currentContact[1].toLowerCase ();
                 removeNamefromArray (fullName);
                 System.out.println();
+                contactFileIO.setContacts (contactHashMap);
+
 
             } else if (userChoice == 5) {
               begin = false;
