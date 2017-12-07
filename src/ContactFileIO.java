@@ -10,7 +10,7 @@ public class ContactFileIO {
     private String filename = "contact.csv";
     private Path dataFile = Paths.get(directory, filename);
 
-    private ContactFileIO() {
+    public ContactFileIO() {
         readFile();
     }
 
