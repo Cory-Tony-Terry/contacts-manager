@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.HashMap;
 
-public class ContactTest {
+public class ContactApplication {
     private static ContactFileIO contactFileIO = new ContactFileIO ();
     private static HashMap<String, Contact> contactHashMap = new HashMap<>(contactFileIO.getContacts());
     private static Input input = new Input();
