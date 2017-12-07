@@ -15,7 +15,6 @@ public class ContactTest {
 
         do {
 
-
             System.out.println ("What would you like to do?\n");
             System.out.println ("1. View contacts.");
             System.out.println ("2. Add a new contact.");
@@ -68,8 +67,7 @@ public class ContactTest {
 
     }
 
-    public static void outputFormat(String name) throws ParseException {
-
+    private static void outputFormat(String name){
         try {
             String phoneMaskSevenDigit = "###-####";
             String phoneMaskNineDigit = "###-###-####";
@@ -91,17 +89,15 @@ public class ContactTest {
         } catch(java.text.ParseException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
-    public static void addNameToArray(String firstName, String lastName, String phoneNumber) throws ParseException {
+    private static void addNameToArray(String firstName, String lastName, String phoneNumber){
         String key = firstName.toLowerCase() + " " + lastName.toLowerCase();
         contactHashMap.putIfAbsent (key,  new Contact(firstName, lastName, phoneNumber));
         outputFormat (key);
-
     }
-    public static void removeNamefromArray(String key) {
+
+    private static void removeNamefromArray(String key) {
         contactHashMap.remove (key);
     }
 
@@ -128,7 +124,4 @@ public class ContactTest {
             contactInfo[2] = input.getString();
             return contactInfo;
     }
-
-
-
 }
